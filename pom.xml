@@ -10,11 +10,12 @@
 	</parent>
 	<groupId>io.github.vikie1</groupId>
 	<artifactId>project-api</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>project-api</name>
-	<description>Demo project for Spring Boot</description>
+	<description>This is the backend for the professional collaboration app </description>
 	<properties>
 		<java.version>17</java.version>
+		<spring-restdocs.version>2.0.5.RELEASE</spring-restdocs.version>
 	</properties>
 	<dependencies>
 		<dependency>
