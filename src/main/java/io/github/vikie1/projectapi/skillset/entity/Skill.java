@@ -1,6 +1,10 @@
 package io.github.vikie1.projectapi.skillset.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.github.vikie1.projectapi.posts.entity.Project;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Skill {
@@ -9,10 +13,13 @@ public class Skill {
     private Long id;
     @Column(unique = true)
     private String skillSet;
+    @ManyToMany(mappedBy = "skills", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    Set<Project> projects;
 
     public Skill(String skillSet) { setSkillSet(skillSet); }
     public Skill(){}
 
+    @JsonIgnore
     public String getSkillSet() { return skillSet.toLowerCase(); }
     public Long getId() { return id; }
 
