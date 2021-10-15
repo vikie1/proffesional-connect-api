@@ -1,10 +1,12 @@
 package io.github.vikie1.projectapi.users.service;
 
 import io.github.vikie1.projectapi.configuration.security.UsersConfiguration;
+import io.github.vikie1.projectapi.error.ResourceNotFoundError;
 import io.github.vikie1.projectapi.users.entity.Authorities;
 import io.github.vikie1.projectapi.users.entity.Users;
 import io.github.vikie1.projectapi.users.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -29,5 +31,12 @@ public class UsersService {
         }
         users.setAuthorities(authoritiesList);
         usersRepository.save(users);
+    }
+
+    //READ
+    public Users get(String username){
+        Optional<Users> user = usersRepository.findByUsername(username);
+        if (user.isPresent()) return user.get();
+        else throw new ResourceNotFoundError("Account '" + username + "' doesn't exist");
     }
 }

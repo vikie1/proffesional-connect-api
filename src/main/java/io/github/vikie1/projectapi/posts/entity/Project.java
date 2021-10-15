@@ -3,6 +3,7 @@ package io.github.vikie1.projectapi.posts.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.vikie1.projectapi.location.entity.Location;
 import io.github.vikie1.projectapi.skillset.entity.Skill;
+import io.github.vikie1.projectapi.tools.entity.Tool;
 import io.github.vikie1.projectapi.users.entity.Users;
 
 import javax.persistence.*;
@@ -22,6 +23,11 @@ public class Project {
             joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "skills_id"))
     private Set<Skill> skills;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "project_tools",
+            joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "tools_id"))
+    private Set<Tool> tools;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) @JoinColumn(name = "users_id")
     private Users user;
 
@@ -29,7 +35,6 @@ public class Project {
     private Location location;
 
     public Project(){}
-
     public Project(String post, Set<Skill> skill, Users user, Location location) {
         setSkills(skill);
         setPost(post);
@@ -37,11 +42,12 @@ public class Project {
         setLocation(location);
     }
 
-    @JsonIgnore
-    public Set<Skill> getSkills() { return skills; }
-    public Long getId() { return id; }
-    public Location getLocation() { return location; }
     public String getPost() { return post; }
+    public Set<Skill> getSkills() { return skills; }
+    public Location getLocation() { return location; }
+    public Set<Tool> getTools() { return tools; }
+    @JsonIgnore
+    public Long getId() { return id; }
     @JsonIgnore
     public Users getUser() { return user; }
 

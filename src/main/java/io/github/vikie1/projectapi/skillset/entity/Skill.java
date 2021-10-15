@@ -2,6 +2,7 @@ package io.github.vikie1.projectapi.skillset.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.github.vikie1.projectapi.posts.entity.Project;
+import io.github.vikie1.projectapi.users.entity.Users;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,8 +14,13 @@ public class Skill {
     private Long id;
     @Column(unique = true)
     private String skillSet;
+
+    //JOINS
     @ManyToMany(mappedBy = "skills", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     Set<Project> projects;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) @JoinColumn(name = "users_id")
+    private Users user;
 
     public Skill(String skillSet) { setSkillSet(skillSet); }
     public Skill(){}

@@ -1,6 +1,7 @@
 package io.github.vikie1.projectapi.location.entity;
 
 import io.github.vikie1.projectapi.posts.entity.Project;
+import io.github.vikie1.projectapi.users.entity.Users;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -15,6 +16,9 @@ public class Location {
     //JOINS
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "location", cascade = CascadeType.ALL)
     Set<Project> projects;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "location", cascade = CascadeType.ALL)
+    Set<Users> users;
 
     public Location(){}
     public Location(String country, String city) {
