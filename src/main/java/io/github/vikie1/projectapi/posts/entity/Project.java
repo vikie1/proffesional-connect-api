@@ -35,20 +35,15 @@ public class Project {
     private Location location;
 
     public Project(){}
-    public Project(String post, Set<Skill> skill, Users user, Location location) {
-        setSkills(skill);
+    public Project(String post) {
         setPost(post);
-        setUser(user);
-        setLocation(location);
     }
 
     public String getPost() { return post; }
     public Set<Skill> getSkills() { return skills; }
     public Location getLocation() { return location; }
     public Set<Tool> getTools() { return tools; }
-    @JsonIgnore
     public Long getId() { return id; }
-    @JsonIgnore
     public Users getUser() { return user; }
 
     public void setLocation(Location location) { this.location = location; }
@@ -56,4 +51,5 @@ public class Project {
     public void setId(Long id) { this.id = id; }
     public void setPost(String post) { this.post = post; }
     public void setUser(Users user) { this.user = user; }
+    public void setTools(Set<Tool> tools) { this.tools = tools; }
 }

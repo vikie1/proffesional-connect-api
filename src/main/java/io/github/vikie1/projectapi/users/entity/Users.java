@@ -35,7 +35,7 @@ public class Users {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) @JoinColumn(name = "users_id")
     private Location location;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = CascadeType.ALL)
     Set<Tool> tools;
 
     public Users(){}
@@ -49,10 +49,12 @@ public class Users {
     }
 
     public String getUsername() { return username; }
-    public Set<Project> getProjects() { return projects; }
     public String getFName() { return fName; }
     public String getLName() { return lName; }
+    public Set<Skill> getSkills() { return skills; }
 
+    @JsonIgnore
+    public Set<Project> getProjects() { return projects; }
     @JsonIgnore
     public Set<Authorities> getAuthorities() {return authorities;}
     @JsonIgnore
@@ -72,4 +74,6 @@ public class Users {
     public void setEmail(String email) { this.email = email; }
     public void setFName(String fName) { this.fName = fName; }
     public void setLName(String lName) { this.lName = lName; }
+    public void setLocation(Location location) { this.location = location; }
+    public void setSkills(Set<Skill> skills) { this.skills = skills; }
 }

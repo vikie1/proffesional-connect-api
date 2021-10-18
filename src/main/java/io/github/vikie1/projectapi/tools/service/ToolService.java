@@ -22,6 +22,6 @@ public class ToolService {
     }
 
     //READ
-    public List<Tool> getTool(Tool tool){ return new ArrayList<>(getTool(tool.getTool())); }
-    public List<Tool> getTool(String toolName){ return new ArrayList<>(toolRepository.findByName(toolName)); }
+    public Tool getTool(Tool tool){ return getTool(tool.getTool()); }
+    public Tool getTool(String toolName){ return toolRepository.findByName(toolName); }
 }

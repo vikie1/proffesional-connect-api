@@ -11,6 +11,7 @@ public class Location {
     @Id @Column(name = "id", nullable = false) @GeneratedValue
     private Long id;
     private String country;
+    @Column(unique = true)
     private String city;
 
     //JOINS

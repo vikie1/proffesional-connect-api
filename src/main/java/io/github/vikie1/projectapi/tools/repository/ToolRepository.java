@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface ToolRepository extends JpaRepository<Tool, Long> {
     boolean existsByName(String name);
-    List<Tool> findByName(String name);
+    Tool findByName(String name);
 }

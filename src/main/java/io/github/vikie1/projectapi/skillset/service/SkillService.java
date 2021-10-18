@@ -22,10 +22,8 @@ public class SkillService {
     }
 
     //READ
-    public List<Skill> getSkill(String skill){ return getSkill(new Skill(skill)); }
-    public List<Skill> getSkill(Skill skill){
-        return new ArrayList<Skill>(skillRepository.findBySkillSet(skill.getSkillSet()));
-    }
+    public Skill getSkill(String skill){ return getSkill(new Skill(skill)); }
+    public Skill getSkill(Skill skill){ return skillRepository.findBySkillSet(skill.getSkillSet()); }
 
     //UPDATE (I don't think its needed but assuming correction of spelling mistake could be a thing)
     public void update(Skill skill){
