@@ -8,7 +8,7 @@ Skillhub aims to be primarily focused on developing a platform that is explicitl
 of creating an environment that is favorable for projects, art, startups and other forms of creation
 free of distraction from unrelated ‘internet noise’.
 
-check more about it <a href="https://github.com/vikie1/proffesional-connect-api/doc/skillhub.pdf">here</a>
+check more about it <a href="https://github.com/vikie1/proffesional-connect-api/blob/84e8beb024b2ee0972552000a496c02db6b85e42/doc/skillhub.pdf">here</a>
 
 <strong>The project is not complete as it does not have a front-end yet</strong><br>
 There are no current live versions
